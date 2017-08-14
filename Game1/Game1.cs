@@ -14,8 +14,9 @@ namespace Game1
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        bool paused;
-        
+        private static bool paused = false;
+        public static bool Paused { get => paused; set => paused = value; }
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -33,6 +34,7 @@ namespace Game1
             // TODO: Add your initialization logic here
 
             base.Initialize();
+
         }
 
         /// <summary>
@@ -66,7 +68,7 @@ namespace Game1
         protected override void Update(GameTime gameTime)
         {
             Debug.WriteLine(IsActive);
-            if(paused && IsActive)
+            if(Paused && IsActive)
             {
                 if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                     Exit();
@@ -94,16 +96,21 @@ namespace Game1
             spriteBatch.End();
             base.Draw(gameTime);
         }
+
+        /// <summary>
+        /// This is called when the game window loses focus.
+        /// </summary>
+        /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void OnDeactivated(object sender, EventArgs args)
         {
             base.OnDeactivated(sender, args);
-            Debug.WriteLine("Deactivated");
+            //Debug.WriteLine("Deactivated");
         }
 
         protected override void OnActivated(object sender, EventArgs args)
         {
             base.OnActivated(sender, args);
-            Debug.WriteLine("Activated");
+            //Debug.WriteLine("Activated");
         }
     }
 }
