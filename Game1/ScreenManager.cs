@@ -36,8 +36,8 @@ namespace Game1
         }
 
         GameScreen currScrn;
-        GameScreen prevScrn;
-        GameScreen nextScrn;
+        GameScreen prevScrn = null;
+        GameScreen nextScrn = null;
 
         public ScreenManager()
         {
