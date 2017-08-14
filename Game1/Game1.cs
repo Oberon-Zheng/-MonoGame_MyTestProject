@@ -1,6 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.IO;
+using System;
+using System.Diagnostics;
 
 namespace Game1
 {
@@ -63,8 +66,9 @@ namespace Game1
                 Exit();
 
             // TODO: Add your update logic here
-
+            Debug.WriteLine(ScreenManager.Instance.GetType());
             base.Update(gameTime);
+            
         }
 
         /// <summary>

@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 //ScreenManager:界面管理器
-//类型：单例类(Singleton)
+//[单例类(Singleton)]
 //作用：管理界面资源（GameScreen）的调度（装卸）、切换以及数据交流
-
 
 
 namespace Game1
@@ -26,12 +28,44 @@ namespace Game1
                 return instance;
             }
         }
-        
-        ScreenManager()
+
+        public ContentManager Content
+        {
+            private set;
+            get;
+        }
+
+        GameScreen currScrn;
+        GameScreen prevScrn;
+        GameScreen nextScrn;
+
+        public ScreenManager()
         {
 
         }
 
+        public void LoadContent(ContentManager content)
+        {
+            this.Content = new ContentManager(content.ServiceProvider);
+            if(currScrn != null)
+            {
+                currScrn.LoadContent();
+            }
+        }
 
+        public void UnloadContent()
+        {
+
+        }
+
+        public void Update(GameTime gameTime)
+        {
+
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+
+        }
     }
 }
