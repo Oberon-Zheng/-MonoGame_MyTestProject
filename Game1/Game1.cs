@@ -68,7 +68,7 @@ namespace Game1
                 Exit();
 
             // TODO: Add your update logic here
-            Debug.WriteLine(ScreenManager.Instance.GetType());
+            //Debug.WriteLine(ScreenManager.Instance.GetType());
             ScreenManager.Instance.Update(gameTime);
             base.Update(gameTime);
             
@@ -80,13 +80,24 @@ namespace Game1
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
             ScreenManager.Instance.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
+        }
+        protected override void OnDeactivated(object sender, EventArgs args)
+        {
+            base.OnDeactivated(sender, args);
+            Debug.WriteLine("Deactivated");
+        }
+
+        protected override void OnActivated(object sender, EventArgs args)
+        {
+            base.OnActivated(sender, args);
+            Debug.WriteLine("Activated");
         }
     }
 }
