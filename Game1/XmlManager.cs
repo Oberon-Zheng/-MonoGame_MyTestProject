@@ -7,6 +7,11 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
 
+//XmlManager:XML序列化管理器
+//[常规类]
+//作用:用于管理XML与对象之间的序列化过程
+//序列化 = 对象 -> 数据流       反序列化 = 数据流 -> 对象
+
 namespace Game1
 {
     public class XmlManager<T>

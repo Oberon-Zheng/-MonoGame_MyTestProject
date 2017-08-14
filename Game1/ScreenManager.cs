@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 //ScreenManager:界面管理器
-//[单例类(Singleton)]
+//[单例类]
 //作用：管理界面资源（GameScreen）的调度（装卸）、切换以及数据交流
 
 
@@ -16,6 +16,8 @@ namespace Game1
 {
     class ScreenManager
     {
+        #region 字段与属性声明
+
         private static ScreenManager instance;
         public static ScreenManager Instance
         {
@@ -39,9 +41,16 @@ namespace Game1
         GameScreen prevScrn = null;
         GameScreen nextScrn = null;
 
+        #endregion
+
+        #region 方法声明
+
         public ScreenManager()
         {
-            
+            //XmlManager<GameScreen> xmlGameScrnMngr = new XmlManager<GameScreen>();
+            //xmlGameScrnMngr.Type = currScrn.type;
+            //在这里进行xml载入
+            //xmlGameScrnMngr.Load("");
         }
 
         public void LoadContent(ContentManager content)
@@ -67,5 +76,7 @@ namespace Game1
         {
 
         }
+
+        #endregion
     }
 }
