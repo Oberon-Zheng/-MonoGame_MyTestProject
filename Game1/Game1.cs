@@ -16,7 +16,7 @@ namespace Game1
         SpriteBatch spriteBatch;
         private static bool paused = false;
         public static bool Paused { get => paused; set => paused = value; }
-
+        bool kickoff = false;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -67,7 +67,28 @@ namespace Game1
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            Debug.WriteLine(IsActive);
+
+            Debug.WriteLine("{0}\t{1}", Keyboard.GetState().IsKeyDown(Keys.P), Keyboard.GetState().IsKeyDown(Keys.P));
+            /*{
+                
+                if (Keyboard.GetState().IsKeyDown(Keys.P))
+                {
+                    if(kickoff == false)
+                    {
+                        Paused = !Paused;
+                        Debug.WriteLine("Pressed");
+                        kickoff = true;
+                    }
+                }
+                if(Keyboard.GetState().IsKeyUp(Keys.P))
+                {
+                    if(kickoff == true)
+                    {
+                        Debug.WriteLine("Released");
+                    }
+                    kickoff = false;
+                }
+            }*/
             if(Paused && IsActive)
             {
                 if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
@@ -78,8 +99,8 @@ namespace Game1
                 ScreenManager.Instance.Update(gameTime);
                 base.Update(gameTime);
             }
-            
-            
+            //Debug.WriteLine(Paused);
+
         }
 
         /// <summary>
