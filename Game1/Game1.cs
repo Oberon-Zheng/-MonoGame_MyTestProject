@@ -44,6 +44,7 @@ namespace Game1
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            ScreenManager.Instance.LoadContent(Content);
         }
 
         /// <summary>
@@ -53,6 +54,7 @@ namespace Game1
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
+            ScreenManager.Instance.UnloadContent();
         }
 
         /// <summary>
@@ -67,6 +69,7 @@ namespace Game1
 
             // TODO: Add your update logic here
             Debug.WriteLine(ScreenManager.Instance.GetType());
+            ScreenManager.Instance.Update(gameTime);
             base.Update(gameTime);
             
         }
@@ -80,7 +83,9 @@ namespace Game1
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-
+            spriteBatch.Begin();
+            ScreenManager.Instance.Draw(spriteBatch);
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }
