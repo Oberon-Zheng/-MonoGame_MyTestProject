@@ -41,7 +41,7 @@ namespace Game1
 
         public ScreenManager()
         {
-
+            
         }
 
         public void LoadContent(ContentManager content)

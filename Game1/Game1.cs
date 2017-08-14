@@ -14,7 +14,9 @@ namespace Game1
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        
+        private static bool paused = false;
+        public static bool Paused { get => paused; set => paused = value; }
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -32,6 +34,7 @@ namespace Game1
             // TODO: Add your initialization logic here
 
             base.Initialize();
+
         }
 
         /// <summary>
@@ -64,13 +67,18 @@ namespace Game1
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            Debug.WriteLine(IsActive);
+            if(Paused && IsActive)
+            {
+                if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                    Exit();
 
-            // TODO: Add your update logic here
-            Debug.WriteLine(ScreenManager.Instance.GetType());
-            ScreenManager.Instance.Update(gameTime);
-            base.Update(gameTime);
+                // TODO: Add your update logic here
+                //Debug.WriteLine(ScreenManager.Instance.GetType());
+                ScreenManager.Instance.Update(gameTime);
+                base.Update(gameTime);
+            }
+            
             
         }
 
@@ -80,13 +88,29 @@ namespace Game1
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
             ScreenManager.Instance.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
+        }
+
+        /// <summary>
+        /// This is called when the game window loses focus.
+        /// </summary>
+        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        protected override void OnDeactivated(object sender, EventArgs args)
+        {
+            base.OnDeactivated(sender, args);
+            //Debug.WriteLine("Deactivated");
+        }
+
+        protected override void OnActivated(object sender, EventArgs args)
+        {
+            base.OnActivated(sender, args);
+            //Debug.WriteLine("Activated");
         }
     }
 }
