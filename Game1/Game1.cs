@@ -5,18 +5,23 @@ using System.IO;
 using System;
 using System.Diagnostics;
 
+using AuxInput = Game1.AuxInput;
+
 namespace Game1
 {
+    
+
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
     public class Game1 : Game
     {
+        //public static KeyState[] keysPrevState = new KeyState[256];
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         private static bool paused = false;
         public static bool Paused { get => paused; set => paused = value; }
-        bool kickoff = false;
+        public bool kickoff = false;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -32,9 +37,9 @@ namespace Game1
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            //AuxInput.Initialze();
+            KeyState ks = AuxInput.GetKeyPrevState(Keys.V);
             base.Initialize();
-
         }
 
         /// <summary>
@@ -68,28 +73,32 @@ namespace Game1
         protected override void Update(GameTime gameTime)
         {
 
-            Debug.WriteLine("{0}\t{1}", Keyboard.GetState().IsKeyDown(Keys.P), Keyboard.GetState().IsKeyDown(Keys.P));
+            //Debug.WriteLine("{0}\t{1}", Keyboard.GetState().IsKeyDown(Keys.P), Keyboard.GetState().IsKeyDown(Keys.P));
             /*{
-                
+
                 if (Keyboard.GetState().IsKeyDown(Keys.P))
                 {
-                    if(kickoff == false)
+                    if (kickoff == false)
                     {
                         Paused = !Paused;
                         Debug.WriteLine("Pressed");
                         kickoff = true;
                     }
                 }
-                if(Keyboard.GetState().IsKeyUp(Keys.P))
+                if (Keyboard.GetState().IsKeyUp(Keys.P))
                 {
-                    if(kickoff == true)
+                    if (kickoff == true)
                     {
                         Debug.WriteLine("Released");
                     }
                     kickoff = false;
                 }
             }*/
-            if(Paused && IsActive)
+            if(AuxInput.IsKeyPressed(Keys.H))
+            {
+                Debug.WriteLine("H Pressed!");
+            }
+            if (!Paused && IsActive)
             {
                 if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                     Exit();
