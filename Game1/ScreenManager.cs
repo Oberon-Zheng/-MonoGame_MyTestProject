@@ -68,6 +68,7 @@ namespace Game1
             {
                 currScrn.UnloadContent();
             }
+            currScrn = null;
         }
 
         public void Update(GameTime gameTime)
