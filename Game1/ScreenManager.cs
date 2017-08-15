@@ -64,17 +64,27 @@ namespace Game1
 
         public void UnloadContent()
         {
-
+            if(currScrn != null)
+            {
+                currScrn.UnloadContent();
+            }
+            currScrn = null;
         }
 
         public void Update(GameTime gameTime)
         {
-
+            if(currScrn != null)
+            {
+                currScrn.Update(gameTime);
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-
+            if(currScrn != null)
+            {
+                currScrn.Draw(spriteBatch);
+            }
         }
 
         #endregion
