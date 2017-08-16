@@ -8,7 +8,9 @@ namespace Game1.GameObjects
 {
     public partial class GameUnit
     {
-        public Party party;
+        private Party party1;
+
+        public virtual Party Party1 { get => party1; set => party1 = value; }
 
         public virtual void LoadContent()
         {

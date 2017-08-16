@@ -9,7 +9,7 @@ namespace Game1.GameObjects
     class Enemy:GameUnit
     {
 
-
+        public Party party = Party.Hostile;
 
         public override void LoadContent()
         {
