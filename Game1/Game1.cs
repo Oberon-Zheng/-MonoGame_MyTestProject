@@ -85,6 +85,7 @@ namespace Game1
                 //Debug.WriteLine(ScreenManager.Instance.GetType());
                 ScreenManager.Instance.Update(gameTime);
                 base.Update(gameTime);
+                //Debug.WriteLine(gameTime.ElapsedGameTime.Milliseconds);
             }
             //Debug.WriteLine(Paused);
 
@@ -103,6 +104,7 @@ namespace Game1
             ScreenManager.Instance.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
+            
         }
 
         /// <summary>
