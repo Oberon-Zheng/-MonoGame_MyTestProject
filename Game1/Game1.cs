@@ -72,10 +72,10 @@ namespace Game1
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if(AuxInput.IsKeyPressed(Keys.H))
+            /*if(AuxInput.IsKeyPressed(Keys.H))
             {
                 Debug.WriteLine("H Pressed!");
-            }
+            }*/
             if (!Paused && IsActive)
             {
                 if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
