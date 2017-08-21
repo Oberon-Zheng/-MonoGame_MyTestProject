@@ -82,10 +82,10 @@ namespace Game1
                     Exit();
 
                 // TODO: Add your update logic here
-                //Debug.WriteLine(ScreenManager.Instance.GetType());
+                
                 ScreenManager.Instance.Update(gameTime);
                 base.Update(gameTime);
-                //Debug.WriteLine(gameTime.ElapsedGameTime.TotalHours);
+                
             }
             //Debug.WriteLine(Paused);
 
