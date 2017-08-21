@@ -13,7 +13,7 @@ namespace Game1.GameObjects
 
         public override void LoadContent()
         {
-
+            
         }
 
         public override void UnloadContent()

@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace Game1.GameObjects
 {
-    public partial class GameUnit
+    public partial class GameUnit : GameObject
     {
         private Party party1;
 
@@ -75,22 +75,22 @@ namespace Game1.GameObjects
             }
         }
 
-        public virtual void LoadContent()
+        public override void LoadContent()
         {
 
         }
 
-        public virtual void UnloadContent()
+        public override void UnloadContent()
         {
 
         }
 
-        public virtual void Update()
+        public override void Update()
         {
 
         }
 
-        public virtual void Draw()
+        public override void Draw()
         {
 
         }

@@ -38,7 +38,7 @@ namespace Game1
         {
             // TODO: Add your initialization logic here
             //AuxInput.Initialze();
-            KeyState ks = AuxInput.GetKeyPrevState(Keys.V);
+            //KeyState ks = AuxInput.GetKeyPrevState(Keys.V);
             base.Initialize();
         }
 
